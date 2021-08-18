@@ -11,7 +11,9 @@ export class HttpRequestService {
     async sendGetRequest(url: string, token?: string): Promise<any> {
         const response = await fetch(url, {
             headers: {
-                'Authorization': token === undefined ? '' : token
+                'Authorization': token === undefined ? '' : 'Bearer ' + token,
+                'Accept': "application/json",
+                'Content-Type': "application/json"
             }
         });
         return response.json();
@@ -22,7 +24,9 @@ export class HttpRequestService {
             method: 'POST',
             body,
             headers: {
-                'Authorization': token === undefined ? '' : token
+                'Authorization': token === undefined ? '' : 'Bearer ' + token,
+                'Accept': "application/json",
+                'Content-Type': "application/json"
             }
         });
         return response.json();
@@ -33,7 +37,9 @@ export class HttpRequestService {
             method: 'PUT',
             body,
             headers: {
-                'Authorization': token === undefined ? '' : token
+                'Authorization': token === undefined ? '' : 'Bearer ' + token,
+                'Accept': "application/json",
+                'Content-Type': "application/json"
             }
         });
         return response.json();
@@ -44,7 +50,9 @@ export class HttpRequestService {
             method: 'DELETE',
             body,
             headers: {
-                'Authorization': token === undefined ? '' : token
+                'Authorization': token === undefined ? '' : 'Bearer ' + token,
+                'Accept': "application/json",
+                'Content-Type': "application/json"
             }
         });
         return response.json();
