@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpRequestService} from "./helpers/http-request/http-request.service";
 import {TokenService} from "./services/token/token.service";
+import {GetEventsService} from "./services/get-events/get-events.service";
 
 @Component({
     selector: 'app-root',
@@ -10,7 +11,7 @@ import {TokenService} from "./services/token/token.service";
 export class AppComponent implements OnInit {
     title = 'api-eventdrive';
 
-    constructor(private httpRequestService: HttpRequestService, private tokenService: TokenService) {
+    constructor(private getEventsService: GetEventsService) {
     }
 
     ngOnInit(): void {
@@ -18,7 +19,6 @@ export class AppComponent implements OnInit {
     }
 
     async init(){
-        const token = await this.tokenService.getToken('25', 'FgR7rnRi9AWe3Y0sgrQhLLJKEA0PQQJxdoyKqSxH');
-        console.log(token);
+        console.log( await this.getEventsService.getEvents());
     }
 }

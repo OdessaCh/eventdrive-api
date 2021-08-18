@@ -10,12 +10,12 @@ export class TokenService {
     constructor(private httpRequestService: HttpRequestService) {
     }
 
-    async getToken(client_id: string, client_secret: string) {
+    async getToken(): Promise<string> {
         const response = await this.httpRequestService.sendPostRequest(
             environment.apiUrl + 'token',
             JSON.stringify({
-                client_id,
-                client_secret
+                client_id: environment.client_id,
+                client_secret: environment.client_secret
             })
         );
         return response.access_token;
